@@ -5,6 +5,7 @@ import PageHome from "./components/PageHome.vue";
 import PageStoreItem from "./components/PageStoreItem.vue";
 import PageCheckout from "./components/PageCheckout.vue";
 import PageNotFound from "./components/PageNotFound.vue";
+import PageLocale from "./components/PageLocale";
 
 Vue.use(VueRouter);
 
@@ -17,21 +18,24 @@ const routes = [
     props: route => ({ id: parseInt(route.params.id) })
   },
   { path: "/checkout", name: "checkout", component: PageCheckout },
+  { path: "/locale", name: "locale", component: PageLocale },
   { path: "*", component: PageNotFound }
 ];
 
-const router = new VueRouter({
-  routes,
-  mode: "history",
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
+export function createRouter() {
+  const router = new VueRouter({
+    routes,
+    mode: "history",
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      }
+      if (to.hash) {
+        return { selector: to.hash };
+      }
+      return { x: 0, y: 0 };
     }
-    if (to.hash) {
-      return { selector: to.hash };
-    }
-    return { x: 0, y: 0 };
-  }
-});
+  });
+  return router;
+}
 
-export default router;

@@ -89,6 +89,12 @@ export default {
     this.fetchData();
   },
 
+  asyncData({ store, router }) {
+    return store.dispatch("item/fetchStoreItemDetails", {
+      id: router.params.id
+    });
+  },
+
   methods: {
     ...mapActions("item", ["fetchStoreItemDetails", "sendComment"]),
 

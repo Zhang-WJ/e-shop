@@ -33,6 +33,10 @@ export default {
 
   mounted() {
     this.fetchItems();
+  },
+
+  asyncData({ store }) {
+    return store.dispatch("items/fetchItems");
   }
 };
 </script>
