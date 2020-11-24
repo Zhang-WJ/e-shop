@@ -27,6 +27,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import StoreCartItem from "./StoreCartItem.vue";
+import { SAVE_ORDERS } from "../store/orders";
 
 export default {
   components: {
@@ -42,11 +43,14 @@ export default {
 
     ...mapActions("cart", ["clearCart"]),
 
+    ...mapActions("orders", [SAVE_ORDERS]),
+
     close() {
       this.setShowCart(false);
     },
 
     checkout() {
+      this[SAVE_ORDERS]({ orderId: Math.random(), items: this.cartItems }); // 这里存取checkout的商品到订单
       this.close();
       this.clearCart();
       this.$router.push({ name: "checkout" });

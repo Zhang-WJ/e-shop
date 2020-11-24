@@ -4,6 +4,7 @@ import Vuex from "vuex";
 import cart from "./cart";
 import item from "./item";
 import items from "./items";
+import orders from "./orders";
 import ui from "./ui";
 
 Vue.use(Vuex);
@@ -22,6 +23,7 @@ export function createStore() {
       cart,
       item,
       items,
+      orders,
       ui
     }
   });

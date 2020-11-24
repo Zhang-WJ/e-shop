@@ -5,6 +5,7 @@ import PageHome from "./components/PageHome.vue";
 import PageStoreItem from "./components/PageStoreItem.vue";
 import PageCheckout from "./components/PageCheckout.vue";
 import PageNotFound from "./components/PageNotFound.vue";
+import PageOrderList from "./components/PageOrderList.vue";
 import PageLocale from "./components/PageLocale";
 
 Vue.use(VueRouter);
@@ -19,6 +20,7 @@ const routes = [
   },
   { path: "/checkout", name: "checkout", component: PageCheckout },
   { path: "/locale", name: "locale", component: PageLocale },
+  { path: "/order/list", name: "orders", component: PageOrderList },
   { path: "*", component: PageNotFound }
 ];
 
